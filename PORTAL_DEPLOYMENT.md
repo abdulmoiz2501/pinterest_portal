@@ -36,6 +36,9 @@ Add these 8 environment variables in Vercel Settings → Environment Variables:
 - `VITE_CLOUDINARY_CLOUD_NAME` = `dc2sdk2mm`
 - `VITE_CLOUDINARY_UPLOAD_PRESET` = `soft-pin-products`
 
+**Portal Detection (Optional but recommended):**
+- `VITE_IS_PORTAL` = `true` (This makes the root URL redirect to admin login)
+
 ### Step 4: Deploy
 1. Click **"Deploy"**
 2. Wait for build to complete
