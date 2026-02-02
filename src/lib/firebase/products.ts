@@ -43,14 +43,19 @@ export const productsService = {
   async getByCategory(category: string): Promise<Product[]> {
     const q = query(
       collection(db, PRODUCTS_COLLECTION),
-      where("category", "==", category),
-      orderBy("createdAt", "desc")
+      where("category", "==", category)
     );
     const querySnapshot = await getDocs(q);
-    return querySnapshot.docs.map((doc) => ({
+    const products = querySnapshot.docs.map((doc) => ({
       id: doc.id,
       ...doc.data(),
     })) as Product[];
+    // Sort by createdAt client-side (newest first)
+    return products.sort((a, b) => {
+      const aDate = a.createdAt ? new Date(a.createdAt).getTime() : 0;
+      const bDate = b.createdAt ? new Date(b.createdAt).getTime() : 0;
+      return bDate - aDate;
+    });
   },
 
   // Add new product
