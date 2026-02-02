@@ -1,4 +1,4 @@
-# Welcome to your Lovable project
+# Pinterest Ecommerce - Curated Lifestyle Finds
 
 ## Project info
 
