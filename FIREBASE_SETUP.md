@@ -132,3 +132,4 @@ service firebase.storage {
 3. **Add collections management** - Extend the admin portal to manage collections
 4. **Set up production rules** - Configure proper security rules for production
 
+

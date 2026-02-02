@@ -7,6 +7,7 @@ import Index from "./pages/Index";
 import Shop from "./pages/Shop";
 import Collections from "./pages/Collections";
 import CollectionDetail from "./pages/CollectionDetail";
+import ProductDetail from "./pages/ProductDetail";
 import About from "./pages/About";
 import NotFound from "./pages/NotFound";
 import AdminLogin from "./pages/admin/Login";
@@ -31,6 +32,7 @@ const App = () => (
             element={isPortal ? <Navigate to="/admin/login" replace /> : <Index />} 
           />
           <Route path="/shop" element={<Shop />} />
+          <Route path="/product/:id" element={<ProductDetail />} />
           <Route path="/collections" element={<Collections />} />
           <Route path="/collections/:slug" element={<CollectionDetail />} />
           <Route path="/about" element={<About />} />

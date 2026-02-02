@@ -87,6 +87,7 @@ const Shop = () => {
                         description={product.description}
                         affiliateUrl={product.affiliateUrl}
                         aspectRatio={product.aspectRatio}
+                        productId={product.id}
                       />
                     </div>
                   ))}

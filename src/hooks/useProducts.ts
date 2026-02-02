@@ -19,3 +19,4 @@ export const useProductsByCategory = (category: string) => {
   });
 };
 
+

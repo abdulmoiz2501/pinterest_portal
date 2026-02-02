@@ -1,4 +1,5 @@
 import { ExternalLink } from "lucide-react";
+import { Link } from "react-router-dom";
 
 interface ProductCardProps {
   image: string;
@@ -6,6 +7,7 @@ interface ProductCardProps {
   description: string;
   affiliateUrl: string;
   aspectRatio?: "square" | "portrait" | "landscape";
+  productId?: string; // Optional: if provided, links to product detail page
 }
 
 const ProductCard = ({
@@ -14,6 +16,7 @@ const ProductCard = ({
   description,
   affiliateUrl,
   aspectRatio = "portrait",
+  productId,
 }: ProductCardProps) => {
   const aspectRatioClasses = {
     square: "aspect-square",
@@ -21,13 +24,26 @@ const ProductCard = ({
     landscape: "aspect-[4/3]",
   };
 
+  // If productId is provided, link to product detail page, otherwise direct to affiliate
+  const CardWrapper = productId 
+    ? ({ children }: { children: React.ReactNode }) => (
+        <Link to={`/product/${productId}`} className="group block card-hover">
+          {children}
+        </Link>
+      )
+    : ({ children }: { children: React.ReactNode }) => (
+        <a
+          href={affiliateUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group block card-hover"
+        >
+          {children}
+        </a>
+      );
+
   return (
-    <a
-      href={affiliateUrl}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="group block card-hover"
-    >
+    <CardWrapper>
       <article className="bg-card rounded-2xl overflow-hidden shadow-soft">
         {/* Image */}
         <div className={`relative ${aspectRatioClasses[aspectRatio]} overflow-hidden`}>
@@ -59,7 +75,7 @@ const ProductCard = ({
           </p>
         </div>
       </article>
-    </a>
+    </CardWrapper>
   );
 };
 

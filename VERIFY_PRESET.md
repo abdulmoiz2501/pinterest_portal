@@ -74,3 +74,4 @@ If it STILL doesn't work, send me:
 - Screenshot of your Upload presets list
 - Or tell me what you see when you click on the preset to edit it
 
+

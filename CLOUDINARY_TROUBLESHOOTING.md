@@ -87,3 +87,4 @@ VITE_CLOUDINARY_UPLOAD_PRESET=products
 3. Try creating a completely new preset with a different name
 4. Make sure you're logged into the correct Cloudinary account
 
+

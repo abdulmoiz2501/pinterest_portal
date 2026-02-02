@@ -74,3 +74,4 @@ service cloud.firestore {
 3. Try adding a product again in the admin portal
 4. It should work now!
 
+
