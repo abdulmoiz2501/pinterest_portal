@@ -46,16 +46,19 @@ export const productsService = {
       where("category", "==", category)
     );
     const querySnapshot = await getDocs(q);
-    const products = querySnapshot.docs.map((doc) => ({
-      id: doc.id,
-      ...doc.data(),
-    })) as Product[];
-    // Sort by createdAt client-side (newest first)
-    return products.sort((a, b) => {
-      const aDate = a.createdAt ? new Date(a.createdAt).getTime() : 0;
-      const bDate = b.createdAt ? new Date(b.createdAt).getTime() : 0;
-      return bDate - aDate;
+    const products = querySnapshot.docs.map((doc) => {
+      const data = doc.data();
+      return {
+        id: doc.id,
+        ...data,
+      } as Product & { createdAt?: string };
     });
+    // Sort by createdAt client-side (newest first) if available
+    return products.sort((a, b) => {
+      const aDate = (a as any).createdAt ? new Date((a as any).createdAt).getTime() : 0;
+      const bDate = (b as any).createdAt ? new Date((b as any).createdAt).getTime() : 0;
+      return bDate - aDate;
+    }) as Product[];
   },
 
   // Add new product
